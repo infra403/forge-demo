@@ -14,14 +14,12 @@ const workflowOption = () =>
     }
     : { workflowsPath: require.resolve('./workflows') };
 
-export async function run() {
-  const worker = await Worker.create({
+export function run() {
+   Worker.create({
     ...workflowOption(),
     activities,
     taskQueue: 'production-sample',
-  });
-
-  await worker.run();
+  }).then(worker => worker.run());
 }
 
 export async function getPriceWorkflow() {

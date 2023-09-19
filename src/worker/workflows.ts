@@ -12,7 +12,8 @@ const {
   startToCloseTimeout: '1209600 seconds', // 7*24 minutes
 })
 
-export const gasPriceWorkflow = async (name: string): Promise<string> => {
+export const gasPriceWorkflow = async (): Promise<string> => {
   const result = await getGasPrice();
+  console.log(`Workflow Gas price is ${result}`)
   return result;
 }
